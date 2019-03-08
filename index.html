@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dot for cat game</title>
+</head>
+<style>
+  html {
+    overflow: hidden;
+    background: #ccc;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    transition: .3s;
+    position: absolute;
+  }
+</style>
+
+<body>
+
+  <div class="dot-wrapp"></div>
+
+  <script>
+    // ТОЧКИ ПРИКОЛЮХА
+
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    let dotWrapp = document.querySelector(".dot-wrapp");
+    randomMoveDot();
+
+
+
+    function randomMoveDot() {
+
+      let dot = document.createElement("div");
+      dotWrapp.appendChild(dot);
+
+      var runDot = setInterval(function () {
+        dot.classList.add("dot")
+        dot.style.transform = "translate" + "(" + (Math.floor(Math.random() * w)) + "px" + "," + (Math.floor(Math.random() *
+          h)) + "px";
+      }, 1000);
+    }
+
+
+
+
+    // LOOK FOR THIS
+    document.onclick = function () {
+      drawRandomDots(1);
+    }
+
+
+    function drawRandomDots(dotsQuantity) {
+      for (let i = 0; i < dotsQuantity; i++) {
+        let dot = document.createElement("div");
+        dot.classList.add("dot")
+
+
+        dotWrapp.appendChild(dot);
+
+        setRandomColor(dot);
+
+        dot.style.transform = "translate" + "(" + (Math.floor(Math.random() * w)) + "px" + "," + (Math.floor(Math.random() *
+          h)) + "px";
+      }
+    }
+  </script>
+</body>
+
+</html>
